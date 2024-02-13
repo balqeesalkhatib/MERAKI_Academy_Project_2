@@ -1,0 +1,49 @@
+*{
+   padding: 0px;
+   box-sizing: border-box;
+}
+.home{
+    height: 0vh;
+    display: flex;
+    flex-direction: column;
+}
+.main{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 40px;
+}
+.category{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 40px;
+}
+.pic2, .pic1, .pic3{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.pic1 img,.pic2 img,.pic3 img{
+    height: 500px;
+}
+.womenHome{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.homeReturn{
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 50px;
+}
+.divWomen{
+    border: 3px solid slateblue;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 20px;
+    /* justify-content: center;
+    align-items: center; */
+}
