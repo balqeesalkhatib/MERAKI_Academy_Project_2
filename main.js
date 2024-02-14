@@ -19,6 +19,14 @@ $(".account").on("click", function () {
   kidsHome.hide();
   createAccount.show();
 });
+$(".cart").on("click", function () {
+  home.hide();
+  womenHome.hide();
+  menHome.hide();
+  kidsHome.hide();
+  createAccount.hide();
+  createCart.show();
+});
 const category = $(`<div class='category'></div>`);
 home.append(category);
 const women = $(`<div class="women" style='font-size:x-large'>Women</div>`);
@@ -192,6 +200,28 @@ body.append(menHome);
 menHome.hide();
 const productsMen = $(`<div class="productsMen"><b>Men Section</b></div>`);
 const homeReturn1 = $(`<div class='homeReturn'>back to home</div>`);
+const menDescription = $(`<div class="menDescription"></div>`);
+body.append(menDescription);
+menDescription.hide();
+const divBack1 = $(`<div class='divBack'></div>`);
+const homeReturnMen = $(`<div class='homeReturnMen'>back to home</div>`);
+const backMen = $(`<div class='backMen'>Back</div>`);
+//I should add cart and fav
+const divImg1 = $(`<img  src=''>`);
+const divTitle1 = $(`<div class="divTitle1"></div>`);
+const divDescription1 = $(`<div class="divDescription1"></div>`);
+divBack1.append(backMen, homeReturnMen);
+menDescription.append(divBack1, divTitle1, divImg1, divDescription1);
+backMen.on("click", function () {
+  menHome.show();
+  menDescription.hide();
+});
+homeReturnMen.on("click", function () {
+  home.show();
+  womenHome.hide();
+  menHome.hide();
+  menDescription.hide();
+});
 menHome.append(homeReturn1, productsMen);
 homeReturn1.on("click", function () {
   home.show();
@@ -204,6 +234,15 @@ const renderMen = () => {
       `<div class="divMen"><img src='${elem.imageSrc}'alt='${elem.title}'><h4>${elem.title}</h4> </div>`
     );
     menHome.append(divMen);
+    divMen.on("click", function () {
+        //============description==========
+        home.hide();
+        menHome.hide();
+        menDescription.show();
+        divImg1.attr("src", `${elem.imageSrc}`);
+        divTitle1.text(`${elem.title}`);
+        divDescription1.text(`${elem.description}`);
+      });
   });
 };
 renderMen();
@@ -259,6 +298,28 @@ kidsHome.hide();
 const productsKids = $(`<div class="productsKids "><b>Kids Section</b></div>`);
 const homeReturn2 = $(`<div class='homeReturn'>back to home</div>`);
 kidsHome.append(homeReturn2, productsKids);
+const kidsDescription = $(`<div class="kidsDescription"></div>`);
+body.append(kidsDescription);
+kidsDescription.hide();
+const divBack2 = $(`<div class='divBack'></div>`);
+const homeReturnKids = $(`<div class='homeReturn'>back to home</div>`);
+const backKids = $(`<div class='backKids'>Back</div>`);
+//I should add cart and fav
+const divImg2 = $(`<img  src=''>`);
+const divTitle2 = $(`<div class="divTitle"></div>`);
+const divDescription2 = $(`<div class="divDescription"></div>`);
+divBack2.append(backKids, homeReturnKids);
+kidsDescription.append(divBack2, divTitle2, divImg2, divDescription2);
+backKids.on("click", function () {
+  kidsHome.show();
+  kidsDescription.hide();
+});
+homeReturnKids.on("click", function () {
+  home.show();
+  womenHome.hide();
+  menHome.hide();
+  kidsDescription.hide();
+});
 homeReturn2.on("click", function () {
   home.show();
   womenHome.hide();
@@ -271,6 +332,15 @@ const renderKids = () => {
       `<div class="divKids"><img src='${elem.imageSrc}'alt='${elem.title}'><h4>${elem.title}</h4> </div>`
     );
     kidsHome.append(divKids);
+    divKids.on("click", function () {
+        //============description==========
+        home.hide();
+        kidsHome.hide();
+        kidsDescription.show();
+        divImg2.attr("src", `${elem.imageSrc}`);
+        divTitle2.text(`${elem.title}`);
+        divDescription2.text(`${elem.description}`);
+      });
   });
 };
 renderKids();
@@ -292,6 +362,22 @@ homeReturn3.on("click", function () {
   menHome.hide();
   kidsHome.hide();
 });
+//=================================
+//============Cart==========
+const createCart = $(`<div class="createCart"></div>`);
+body.append(createCart);
+createCart.hide();
+const homeReturn6 = $(`<div class='homeReturn3'>back to home</div>`);
+const divProducts=$(`<div class="divProducts">divProducts</div>`)
+const divTotal=$(`<div class="divTotal"></div>`)//price+checkout
+createCart.append(homeReturn6,divProducts,divTotal)
+const divPrice=$(`<div class="divPrice">divPrice</div>`)//total price
+const checkout=$(`<div class="checkout"><button style="width: 90px;">Checkout</button></div>`)
+divTotal.append(divPrice,checkout)
+homeReturn6.on("click", function () {
+    home.show();
+    createCart.hide();
+      });
 //=================================
 //============description==========
 const mainDescription = $(`<div class="mainDescription">mainDescription</div>`);

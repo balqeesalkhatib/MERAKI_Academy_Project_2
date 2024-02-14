@@ -63,6 +63,9 @@
     display: flex;
     justify-content: flex-end;
     margin-bottom: 50px;
+    background-color: #ebaa28;
+    height: 40px;
+    align-items: center;
 }
 .divWomen,.divMen,.divKids{
     border: 3px solid slateblue;
@@ -92,6 +95,9 @@
     width:100%;
     justify-content: flex-end;
     margin-bottom: 50px;
+    height: 40px;
+    background-color: #ebaa28;
+    align-items: center;
 }
 .createAccount{
     display: flex;
@@ -101,21 +107,40 @@
     margin-left: 40px;
     gap: 10px;
     flex-wrap: wrap;
+}  
+/* cart */
+.createCart{
+    display: flex; 
+    flex-direction: column;
+    gap: 40px; 
+}
+.divProducts{
+    border: solid 3px red;
+   
+}
+.divTotal{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 90px;
 }
 /* description */
-.womenDescription{
+.divBack{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 40px;
+    background-color: #ebaa28;
+    
+}
+.womenDescription,.menDescription,.kidsDescription{
     display: flex;
     flex-direction: column;
     font-size: x-large;
     margin-left: 25px;
     gap: 30px;
 }
-.womenDescription img{
+.womenDescription img,.menDescription img,.kidsDescription img{
         width: 75%;
 }
-.divBack{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
+
 
