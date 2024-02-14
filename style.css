@@ -102,4 +102,20 @@
     gap: 10px;
     flex-wrap: wrap;
 }
+/* description */
+.womenDescription{
+    display: flex;
+    flex-direction: column;
+    font-size: x-large;
+    margin-left: 25px;
+    gap: 30px;
+}
+.womenDescription img{
+        width: 75%;
+}
+.divBack{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
 
