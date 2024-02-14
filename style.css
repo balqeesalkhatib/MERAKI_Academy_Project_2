@@ -7,6 +7,9 @@
     display: flex;
     flex-direction: column;
 }
+.name span{
+    color: #EB6215;
+}
 .main{
     display: flex;
     justify-content: space-between;
@@ -36,7 +39,7 @@
 }
 .darkMode{
     background-color: black;
-    color: blue;
+    color: #EB6215;
 }
 .lightMode{
     background-color: white;
@@ -51,7 +54,7 @@
 .womenHome, .menHome, .kidsHome{
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
+   
 }
 .homeReturn,.homeReturn1,.homeReturn2{
     display: flex;
@@ -64,9 +67,20 @@
     flex-direction: column;
     flex-wrap: wrap;
     gap: 20px;
-    /* justify-content: center;
-    align-items: center; */
+    justify-content: center;
+    align-items: center;
+    font-size: x-large;
 }
+.divKids img,.divWomen img, .divMen img{
+    border: 5px solid red; 
+    width: 60%;
+    }
+    .productsKids, .products, .productsMen{
+        display: flex;
+        justify-content: center;
+        padding: 25px;
+        font-size: xx-large;
+    }
 /* account */
 .homeReturn3{
     display: flex;
