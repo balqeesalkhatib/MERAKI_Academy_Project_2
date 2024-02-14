@@ -142,5 +142,9 @@
 .womenDescription img,.menDescription img,.kidsDescription img{
         width: 75%;
 }
+.divReaction{
+    display: flex;
+   justify-content: space-between; 
+}
 
 

@@ -68,35 +68,35 @@ const womenProducts = [
       "https://cdn.pixabay.com/photo/2016/08/04/18/30/model-1569741_640.jpg",
     description:
       "Beautiful lady overjoyed by warm spring breeze dream of romantic date wear cute floral dress isolated pink background stock photo",
-    rate: 10,
-    price: 25,
+    rate: 8.5,
+    price: '33 JD',
   },
   {
     id: 2,
     title: "Traditional dress",
     imageSrc:
       "https://cdn.pixabay.com/photo/2014/02/27/16/10/medieval-276019_640.jpg",
-    description: "some description about product",
+    description: "Using the word sophisticated can convey a sense of class and elegance that is attractive and timeless. Describing outfits and women's dresses can be a challenge, but using creative",
     rate: 10,
-    price: 25,
+    price: '45 JD',
   },
   {
     id: 3,
     title: " traditional Wedding dress",
     imageSrc:
       "https://cdn.pixabay.com/photo/2021/02/11/05/34/woman-6004282_640.jpg",
-    description: "some description about product",
-    rate: 10,
-    price: 25,
+    description: "fashion is the most general term and applies to any way of dressing, behaving, writing, or performing that is favored at any one time or place",
+    rate: 9.5,
+    price:'30 JD',
   },
   {
     id: 4,
     title: "Indian Sari",
     imageSrc:
       "https://cdn.pixabay.com/photo/2014/05/30/15/01/sari-358314_640.jpg",
-    description: "some description about product",
+    description: " dress (also known as a frock or a gown) is a garment traditionally worn by women or girls consisting of a skirt with an attached bodice (or a matching bodice giving the effect of a one-piece garment)",
     rate: 10,
-    price: 25,
+    price: '50 JD',
   },
 ];
 const womenHome = $(`<div class="womenHome"></div>`);
@@ -115,8 +115,14 @@ const backWomen = $(`<div class='backWomen'>Back</div>`);
 const divImg = $(`<img  src=''>`);
 const divTitle = $(`<div class="divTitle"></div>`);
 const divDescription = $(`<div class="divDescription"></div>`);
+const divRate = $(`<div class="divRate"></div>`);
+const divP= $(`<div class="divP"></div>`);
+const divReaction=$(`<div class="divReaction"></div>`)
+const divCart= $(`<div class="divCart">cart</div>`);
+const divFav= $(`<div class="divFav">fav</div>`);
 divBack.append(backWomen, homeReturn4);
-womenDescription.append(divBack, divTitle, divImg, divDescription);
+womenDescription.append(divBack, divTitle, divImg, divDescription,divRate,divP,divReaction);
+divReaction.append(divCart,divFav)
 backWomen.on("click", function () {
   womenHome.show();
   womenDescription.hide();
@@ -146,7 +152,19 @@ const render = () => {
       divImg.attr("src", `${elem.imageSrc}`);
       divTitle.text(`${elem.title}`);
       divDescription.text(`${elem.description}`);
+      divRate.text(`Rate: ${elem.rate}`);
+      divP.text(`Price: ${elem.price}`);
     });
+    //============Add to cart==========
+    divCart.on("click", function () {
+        createCart.show();
+        womenDescription.hide();
+        // console.log(divProducts);
+        // divProducts.addClass('divTitle')
+        // console.log(divProducts.text());
+        // divProducts.text(`${elem.title}`)
+        
+    })
   });
 };
 render();
@@ -163,36 +181,36 @@ const menProducts = [
     title: "Suit fashion",
     imageSrc:
       "https://cdn.pixabay.com/photo/2018/02/07/19/46/suit-3137825_640.png",
-    description: "some description about product",
-    rate: 10,
-    price: 25,
+    description: "suit, lounge suit, or business suit is a set of clothes comprising a suit jacket and trousers of identical textiles generally worn with a collared dress shirt, necktie, and dress shoes.",
+    rate: 8.5,
+    price: '25JD',
   },
   {
     id: 2,
     title: "suit menswear",
     imageSrc:
       "https://cdn.pixabay.com/photo/2015/04/09/11/19/suit-714357_640.jpg",
-    description: "some description about product",
-    rate: 10,
-    price: 25,
+    description: "The most important quality of a good suit is a jacket that has a full canvas layer between the fabric and lining.",
+    rate: 9,
+    price: '35 JD',
   },
   {
     id: 3,
     title: "cotton shirt",
     imageSrc:
       "https://cdn.pixabay.com/photo/2016/11/29/10/21/jacket-1868990_640.jpg",
-    description: "some description about product",
-    rate: 10,
-    price: 25,
+    description: "The most important quality of a good suit is a jacket that has a full canvas layer between the fabric and lining.",
+    rate: 9.5,
+    price: '15JD',
   },
   {
     id: 4,
     title: "Suit",
     imageSrc:
       "https://cdn.pixabay.com/photo/2019/06/13/12/07/suit-4271440_640.jpg",
-    description: "some description about product",
+    description: " Wearing a suit signifies that you are taking the other person more seriously and are striving to stand up to their expectations" ,
     rate: 10,
-    price: 25,
+    price: '75 JD',
   },
 ];
 const menHome = $(`<div class="menHome"></div>`);
@@ -210,8 +228,10 @@ const backMen = $(`<div class='backMen'>Back</div>`);
 const divImg1 = $(`<img  src=''>`);
 const divTitle1 = $(`<div class="divTitle1"></div>`);
 const divDescription1 = $(`<div class="divDescription1"></div>`);
+const divRate1 = $(`<div class="divRate"></div>`);
+const divP1= $(`<div class="divP"></div>`);
 divBack1.append(backMen, homeReturnMen);
-menDescription.append(divBack1, divTitle1, divImg1, divDescription1);
+menDescription.append(divBack1, divTitle1, divImg1, divDescription1,divRate1,divP1);
 backMen.on("click", function () {
   menHome.show();
   menDescription.hide();
@@ -242,6 +262,8 @@ const renderMen = () => {
         divImg1.attr("src", `${elem.imageSrc}`);
         divTitle1.text(`${elem.title}`);
         divDescription1.text(`${elem.description}`);
+        divRate1.text(`Rate: ${elem.rate}`);
+      divP1.text(`Price: ${elem.price}`);
       });
   });
 };
@@ -260,8 +282,8 @@ const kidsProducts = [
     title: "Newborn baby clothes",
     imageSrc:
       "https://cdn.pixabay.com/photo/2017/02/08/02/56/booties-2047596_640.jpg",
-    description: "some description about product",
-    rate: 10,
+    description: "comfortable, soft and easy to take care of. Stretchy jumpsuits that fasten at the front are best, as well as tops with envelope necks, which are easier to get over your baby's head. Jumpsuits with zips can make dressing your baby quick and easy too.",
+    rate: 9.5,
     price: "25JD",
   },
   {
@@ -269,7 +291,8 @@ const kidsProducts = [
     title: "Kids Shirt",
     imageSrc:
       "https://cdn.pixabay.com/photo/2018/03/02/10/17/portrait-3192816_1280.jpg",
-    description: "some description about product",
+    description: 
+    "a lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment",
     rate: 10,
     price: "7JD",
   },
@@ -278,8 +301,8 @@ const kidsProducts = [
     title: "Traditional clothing",
     imageSrc:
       "https://cdn.pixabay.com/photo/2015/05/20/14/27/traditional-775512_640.jpg",
-    description: "some description about product",
-    rate: 10,
+    description: "one of the more important attributes to look for in infant and baby clothing is that the clothes are soft and not rough. Soft baby clothes made from organic cotton or eco-friendly materials are becoming more popular.",
+    rate: 8.5,
     price: "35JD",
   },
   {
@@ -287,8 +310,8 @@ const kidsProducts = [
     title: "Socks",
     imageSrc:
       "https://cdn.pixabay.com/photo/2016/08/08/16/11/ankle-socks-1578652_640.jpg",
-    description: "some description about product",
-    rate: 10,
+    description: "Comfort and Skin Sensitivity: Babies have delicate and sensitive skin, making it crucial to prioritize their comfort. ",
+    rate: 9,
     price: "2JD",
   },
 ];
@@ -308,8 +331,10 @@ const backKids = $(`<div class='backKids'>Back</div>`);
 const divImg2 = $(`<img  src=''>`);
 const divTitle2 = $(`<div class="divTitle"></div>`);
 const divDescription2 = $(`<div class="divDescription"></div>`);
+const divRate2 = $(`<div class="divRate"></div>`);
+const divP2= $(`<div class="divP"></div>`);
 divBack2.append(backKids, homeReturnKids);
-kidsDescription.append(divBack2, divTitle2, divImg2, divDescription2);
+kidsDescription.append(divBack2, divTitle2, divImg2, divDescription2,divRate2,divP2);
 backKids.on("click", function () {
   kidsHome.show();
   kidsDescription.hide();
@@ -340,6 +365,8 @@ const renderKids = () => {
         divImg2.attr("src", `${elem.imageSrc}`);
         divTitle2.text(`${elem.title}`);
         divDescription2.text(`${elem.description}`);
+        divRate2.text(`Rate: ${elem.rate}`);
+      divP2.text(`Price: ${elem.price}`);
       });
   });
 };
