@@ -156,13 +156,11 @@ const render = () => {
       divP.text(`Price: ${elem.price}`);
     });
     //============Add to cart==========
-    divCart.on("click", function () {
+    divImg.on("click", function () {
+        console.log(this);
         createCart.show();
         womenDescription.hide();
-        // console.log(divProducts);
-        // divProducts.addClass('divTitle')
-        // console.log(divProducts.text());
-        // divProducts.text(`${elem.title}`)
+        divProducts.attr("src", this.src);//should add price and total price edit img
         
     })
   });
@@ -395,7 +393,7 @@ const createCart = $(`<div class="createCart"></div>`);
 body.append(createCart);
 createCart.hide();
 const homeReturn6 = $(`<div class='homeReturn3'>back to home</div>`);
-const divProducts=$(`<div class="divProducts">divProducts</div>`)
+const divProducts=$(`<img src='' class="divProducts">`)
 const divTotal=$(`<div class="divTotal"></div>`)//price+checkout
 createCart.append(homeReturn6,divProducts,divTotal)
 const divPrice=$(`<div class="divPrice">divPrice</div>`)//total price
