@@ -41,6 +41,7 @@ home.append(pic1, pic2, pic3, mode);
 mode.append(dark, light);
 dark.on("click", function () {
   body.removeClass("lightMode").addClass("darkMode");
+  $('.main').css('background-color','black')
 });
 light.on("click", function () {
   body.removeClass("darkMode").addClass("lightMode");
@@ -91,6 +92,12 @@ womenHome.hide();
 const homeReturn = $(`<div class='homeReturn'>back to home</div>`);
 const products = $(`<div class="products"><b>Women Section</b></div>`);
 womenHome.append(homeReturn, products);
+const womenDescription = $(`<div class="womenDescription">womenDescription</div>`);
+body.append(womenDescription)
+womenDescription.hide()
+const divImg=$(`<img  src=''>`)
+const divDescription=$(`<div class="divDescription">divDescription</div>`)
+womenDescription.append(divImg,divDescription)
 homeReturn.on("click", function () {
   home.show();
   womenHome.hide();
@@ -102,6 +109,16 @@ const render = () => {
       `<div class="divWomen"><img src='${elem.imageSrc}'alt='${elem.title}'><h4>${elem.title}</h4> </div>`
     );
     womenHome.append(divWomen);
+    divWomen.on('click',function () {
+        //============description==========
+        home.hide();
+        womenHome.hide();
+        womenDescription.show()
+        console.log(this);
+        console.log(`${elem.imageSrc}`);
+        divImg.attr("src", `${elem.imageSrc}`);
+        // divImg.append(elem.imageSrc)
+    })
   });
 };
 render();
