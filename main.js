@@ -23,8 +23,9 @@ $("#searchInput").on("click", function () {
   } else if ($("#searchInput").val() === "kids".toLowerCase()) {
     home.hide();
     kidsHome.show();
+  } else {
+    $("#searchInput").val("");
   }
-  else{ $("#searchInput").val('')}
 });
 $(".account").on("click", function () {
   home.hide();
@@ -57,8 +58,12 @@ const pic3 =
   $(`<div class="pic3"><p style="font-size: xx-large;">Free Shipping</p><img src="pic3.jpg" alt="Free Shipping">
 </div>`);
 const mode = $(`<div class="mode"></div>`);
-const dark = $(`<div><i style="font-size: xx-large;" class="fa-solid fa-lightbulb"></i></div>`);
-const light = $(`<div><i style="font-size: xx-large;" class="fa-regular fa-lightbulb"></i></div>`);
+const dark = $(
+  `<div><i style="font-size: xx-large;" class="fa-solid fa-lightbulb"></i></div>`
+);
+const light = $(
+  `<div><i style="font-size: xx-large;" class="fa-regular fa-lightbulb"></i></div>`
+);
 home.append(pic1, pic2, pic3, mode);
 mode.append(dark, light);
 dark.on("click", function () {
@@ -67,7 +72,7 @@ dark.on("click", function () {
 });
 light.on("click", function () {
   body.removeClass("darkMode").addClass("lightMode");
-  $('.main').css('background-color', '#FFFABA')
+  $(".main").css("background-color", "#FFFABA");
 });
 //=============================
 //==========Women===========
@@ -127,14 +132,18 @@ const stars = $(` <div class="rateStars">
 const womenHome = $(`<div class="womenHome"></div>`);
 body.append(womenHome);
 womenHome.hide();
-const homeReturn = $(`<div class='homeReturn'><i class="fa-solid fa-house"></i></div>`);
+const homeReturn = $(
+  `<div class='homeReturn'><i class="fa-solid fa-house"></i></div>`
+);
 const products = $(`<div class="products"><b>Women Section</b></div>`);
 womenHome.append(homeReturn, products);
 const womenDescription = $(`<div class="womenDescription"></div>`);
 body.append(womenDescription);
 womenDescription.hide();
 const divBack = $(`<div class='divBack'></div>`);
-const homeReturn4 = $(`<div class='homeReturn'><i class="fa-solid fa-house"></i></div>`);
+const homeReturn4 = $(
+  `<div class='homeReturn'><i class="fa-solid fa-house"></i></div>`
+);
 const backWomen = $(`<div class='backWomen'>Back</div>`);
 //I should add cart and fav
 const divImg = $(`<img  src=''>`);
@@ -143,8 +152,12 @@ const divDescription = $(`<div class="divDescription"></div>`);
 const divRate = $(`<div class="divRate"></div>`);
 const divP = $(`<div class="divP"></div>`);
 const divReaction = $(`<div class="divReaction"></div>`);
-const divCart = $(`<div class="divCart">cart</div>`);
-const divFav = $(`<div class="divFav">fav</div>`);
+const divCart = $(
+  `<div class="divCart"><i style='font-size:xx-large' class="fa-solid fa-cart-shopping"></i></div>`
+);
+const divFav = $(
+  `<div class="divFav"><i  style='font-size:xx-large' class="fa-solid fa-heart"></i></div>`
+);
 divBack.append(backWomen, homeReturn4);
 womenDescription.append(
   divBack,
@@ -193,10 +206,9 @@ const render = () => {
       console.log(this);
       createCart.show();
       womenDescription.hide();
-      const deleteItem = $(`<button class='delete'>Delete</button>`);
       divProducts.attr("src", this.src); //should add price and total price edit img
       div2.text(`Price: ${elem.price}`);
-      div.append(deleteItem);
+      deleteItem.show();
       console.log(divProducts);
       deleteItem.on("click", function () {
         div.html("");
@@ -258,12 +270,16 @@ const menHome = $(`<div class="menHome"></div>`);
 body.append(menHome);
 menHome.hide();
 const productsMen = $(`<div class="productsMen"><b>Men Section</b></div>`);
-const homeReturn1 = $(`<div class='homeReturn'><i class="fa-solid fa-house"></i></div>`);
+const homeReturn1 = $(
+  `<div class='homeReturn'><i class="fa-solid fa-house"></i></div>`
+);
 const menDescription = $(`<div class="menDescription"></div>`);
 body.append(menDescription);
 menDescription.hide();
 const divBack1 = $(`<div class='divBack'></div>`);
-const homeReturnMen = $(`<div class='homeReturnMen'><i class="fa-solid fa-house"></i></div>`);
+const homeReturnMen = $(
+  `<div class='homeReturnMen'><i class="fa-solid fa-house"></i></div>`
+);
 const backMen = $(`<div class='backMen'>Back</div>`);
 //I should add cart and fav
 const divImg1 = $(`<img  src=''>`);
@@ -370,13 +386,17 @@ const kidsHome = $(`<div class="kidsHome"></div>`);
 body.append(kidsHome);
 kidsHome.hide();
 const productsKids = $(`<div class="productsKids "><b>Kids Section</b></div>`);
-const homeReturn2 = $(`<div class='homeReturn'><i class="fa-solid fa-house"></i></div>`);
+const homeReturn2 = $(
+  `<div class='homeReturn'><i class="fa-solid fa-house"></i></div>`
+);
 kidsHome.append(homeReturn2, productsKids);
 const kidsDescription = $(`<div class="kidsDescription"></div>`);
 body.append(kidsDescription);
 kidsDescription.hide();
 const divBack2 = $(`<div class='divBack'></div>`);
-const homeReturnKids = $(`<div class='homeReturn'><i class="fa-solid fa-house"></i></div>`);
+const homeReturnKids = $(
+  `<div class='homeReturn'><i class="fa-solid fa-house"></i></div>`
+);
 const backKids = $(`<div class='backKids'>Back</div>`);
 //I should add cart and fav
 const divImg2 = $(`<img  src=''>`);
@@ -434,7 +454,9 @@ renderKids();
 const createAccount = $(`<div class="createAccount"></div>`);
 body.append(createAccount);
 createAccount.hide();
-const homeReturn3 = $(`<div class='homeReturn3'><i class="fa-solid fa-house"></i></div>`);
+const homeReturn3 = $(
+  `<div class='homeReturn3'><i class="fa-solid fa-house"></i></div>`
+);
 const nameAccount =
   $(`<div class="nameAccount" style="font-size: xx-large;">Create Account</div>
 <label> Email:</label> <br><input placeholder="Enter your email" type="email"><br><label> Password:</label> <br><input placeholder="Enter your password" type="password"><br><label> Confirm password:</label> <br><input placeholder="Confirm your password" type="password"><br>I agree<input type="radio" required><br>`);
@@ -452,13 +474,18 @@ homeReturn3.on("click", function () {
 const createCart = $(`<div class="createCart"></div>`);
 body.append(createCart);
 createCart.hide();
-const homeReturn6 = $(`<div class='homeReturn3'><i class="fa-solid fa-house"></i></div>`);
-const div = $(`<div></div>`);
-const div2 = $(`<div></div>`);
+const homeReturn6 = $(
+  `<div class='homeReturn3'><i class="fa-solid fa-house"></i></div>`
+);
+const div = $(`<div class='div'></div>`);
+const deleteItem = $(`<button class='delete'>Delete</button>`);
+const div2 = $(`<div class='div2'></div>`);
 const divProducts = $(`<img src='' class="divProducts">`);
 const divTotal = $(`<div class="divTotal"></div>`); //price+checkout
 createCart.append(homeReturn6, div, divTotal);
 div.append(divProducts, div2);
+div.append(deleteItem);
+deleteItem.hide();
 const divPrice = $(`<div class="divPrice"></div>`); //total price
 const checkout = $(
   `<div class="checkout"><button style="width: 90px;">Checkout</button></div>`
@@ -469,6 +496,5 @@ homeReturn6.on("click", function () {
   createCart.hide();
 });
 //=================================
-//============description==========
-const mainDescription = $(`<div class="mainDescription">mainDescription</div>`);
+
 //=================================

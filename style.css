@@ -87,7 +87,8 @@ input{
 }
 .divKids img,.divWomen img, .divMen img{
     border: 5px solid red; 
-    width: 60%;
+    width: 50%;
+   
     }
     .productsKids, .products, .productsMen{
         display: flex;
@@ -119,24 +120,30 @@ input{
 }  
 /* cart */
 .createCart{
+    border: #ebaa28  2px solid;
     display: flex; 
     flex-direction: column;
     gap: 40px; 
 }
 .div{
+    border: green 2px solid;
     display: flex;  
     flex-direction: row; 
 }
 .divProducts{
-    border: solid 3px red;
-    width: 40%;
+    
+    border: solid 3px blue;
+    width: 20%;
    
 }
-
+.div2{
+    border: solid 3px black;
+}
 .divTotal{
     display: flex;
     flex-wrap: wrap;
     gap: 90px;
+    border: solid 3px red;
 }
 /* description */
 .divBack{
@@ -152,14 +159,15 @@ input{
     flex-direction: column;
     font-size: x-large;
     margin-left: 25px;
-    gap: 30px;
-}
+    gap: 10px;
+    }
 .womenDescription img,.menDescription img,.kidsDescription img{
         width: 75%;
 }
 .divReaction{
     display: flex;
-   justify-content: space-between; 
+   justify-content: flex-start; 
+   gap: 50px;
 }
 
 
