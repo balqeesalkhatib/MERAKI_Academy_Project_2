@@ -50,7 +50,7 @@
 .lightMode{
     background-color:  beige;
     color: black;
-}
+   }
 /* search */
 input{
     font-size: larger;
@@ -73,6 +73,7 @@ input{
     background-color: #ebaa28;
     height: 40px;
     align-items: center;
+    font-size: x-large;
 }
 .divWomen,.divMen,.divKids{
     border: 3px solid slateblue;
@@ -105,6 +106,7 @@ input{
     height: 40px;
     background-color: #ebaa28;
     align-items: center;
+    font-size: x-large;
 }
 .createAccount{
     display: flex;
