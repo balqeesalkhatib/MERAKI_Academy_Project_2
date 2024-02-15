@@ -247,12 +247,12 @@ const render = (newArray) => {
       categoryHome.show();
       womenDescription.hide();
     });
-    homeReturn4.on("click", function () {
-      home.show();
-      categoryHome.hide();
+    // homeReturn4.on("click", function () {
+    //   home.show();
+    //   categoryHome.hide();
 
-      womenDescription.hide();
-    });
+    //   womenDescription.hide();
+    // });
     homeReturn.on("click", function () {
       home.show();
       categoryHome.hide();
@@ -272,9 +272,13 @@ const render = (newArray) => {
 
 const renderOneItem = function (e) {
     //============description==========
-    
+    $('.details').html('')
+    $('.details').show()
     home.hide();
     categoryHome.hide();
+    const homeReturn4 = $(
+        `<div class='homeReturn'><i class="fa-solid fa-house"></i></div>`
+      );
     const divImg = $(`<img  src='${e.imageSrc}'>`);
     const divTitle = $(`<div class="divTitle">${e.title}</div>`);
     const divDescription = $(`<div class="divDescription"></div>`);
@@ -287,16 +291,25 @@ const renderOneItem = function (e) {
     const divFav = $(
       `<div class="divFav"><i  style='font-size:xx-large' class="fa-solid fa-heart"></i></div>`
     );
+    
     // divBack.append(backWomen, homeReturn4);
     $('.details').append(
     //   divBack,
+    homeReturn4,
       divTitle,
       divImg,
       divDescription,
       divRate,
       divP,
-      divReaction
+      divCart
     );
+    homeReturn4.on("click", function () {
+        home.show();
+        categoryHome.hide();
+        $('.details').hide()//ask know
+        
+      });
+      
     // divReaction.append(divCart, divFav);
    
     // womenDescription.attr('id',oneItem.id)
@@ -307,9 +320,20 @@ const renderOneItem = function (e) {
     // divRate.html(stars);
     // divP.text(`Price: ${oneItem.price}`);
     divCart.on('click',()=>{
-        cartArr.push(oneItem)
+        cartArr.push(e)
         console.log(cartArr);
     })
 
   }
+  $(".cart").on("click", function () {
+  home.hide();
+//   womenHome.hide();
+//   menHome.hide();
+//   kidsHome.hide();
+//   createAccount.hide();
+console.log(cartArr);
+  $('.createCart').show();
+  render(cartArr)
+  renderOneItem(cartArr)
+});
 // render()
