@@ -2,6 +2,9 @@
    padding: 0px;
    box-sizing: border-box;
 }
+.checked{
+    color: orange;
+}
 .home{
     height: 0vh;
     display: flex;
@@ -48,9 +51,13 @@
     background-color:  beige;
     color: black;
 }
+/* search */
+input{
+    font-size: larger;
+}
 #searchInput{
-    height: 30px;
-    width: 200px;
+    height: 35px;
+    width: 300px;
     border-radius: 25px;
 }
 /* category */
@@ -114,10 +121,16 @@
     flex-direction: column;
     gap: 40px; 
 }
+.div{
+    display: flex;  
+    flex-direction: row; 
+}
 .divProducts{
     border: solid 3px red;
+    width: 40%;
    
 }
+
 .divTotal{
     display: flex;
     flex-wrap: wrap;
@@ -146,5 +159,7 @@
     display: flex;
    justify-content: space-between; 
 }
+
+
 
 
