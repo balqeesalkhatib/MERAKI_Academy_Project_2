@@ -9,7 +9,7 @@ const mainContains =
   $(`<div class='name' style='font-size:xx-large'><b><span>Family</span> Shop</b></div>
 <div class='search'><input type="search" id="searchInput" placeholder="What can we help you find?"></div>
 <div class='account' style='font-size:xx-large'><i class="fa-solid fa-user"></i></div>
-<div class='cart' style='font-size:xx-large'><i class="fa-solid fa-cart-shopping"></i></div>
+<div class='cart' ><i style='font-size:xx-large' class="fa-solid fa-cart-shopping"></i><span> 0 </span></div>
 <div class='fav' style='font-size:xx-large'><i class="fa-solid fa-heart"></i></div>`);
 main.append(mainContains);
 $("#searchInput").on("click", function () {
@@ -34,14 +34,14 @@ $(".account").on("click", function () {
   kidsHome.hide();
   createAccount.show();
 });
-$(".cart").on("click", function () {
-  home.hide();
-  womenHome.hide();
-  menHome.hide();
-  kidsHome.hide();
-  createAccount.hide();
-  createCart.show();
-});
+// $(".cart").on("click", function () {
+//   home.hide();
+//   womenHome.hide();
+//   menHome.hide();
+//   kidsHome.hide();
+//   createAccount.hide();
+//   createCart.show();
+// });
 const category = $(`<div class='category'></div>`);
 home.append(category);
 const women = $(`<div class="women" style='font-size:x-large'>Women</div>`);
@@ -169,6 +169,7 @@ womenDescription.append(
   divReaction
 );
 divReaction.append(divCart, divFav);
+// hhhhhhhhhhh
 backWomen.on("click", function () {
   womenHome.show();
   womenDescription.hide();
@@ -184,36 +185,73 @@ homeReturn.on("click", function () {
   womenHome.hide();
   menHome.hide();
 });
+//=================from here
+const cartArr =[]
+const renderOneItem = function () {
+    //============description==========
+    const oneItem = womenProducts.find(x=>x.id === parseInt(this.id ))
+    home.hide();
+    womenHome.hide();
+    womenDescription.show();
+    womenDescription.attr('id',oneItem.id)
+    console.log(womenDescription);
+    divImg.attr("src", `${oneItem.imageSrc}`);
+    divTitle.text(`${oneItem.title}`);
+    divDescription.text(`${oneItem.description}`);
+    divRate.html(stars);
+    divP.text(`Price: ${oneItem.price}`);
+    divCart.on('click',()=>{
+        cartArr.push(oneItem)
+        console.log(cartArr);
+    })
+
+  }
+
+  const addToCart = function () {
+    // womenDescription.hide();
+    // createCart.show();
+    cartArr.push(womenDescription.attr('id'))
+    console.log(cartArr);
+}
+const array=[];
+$(".cart").on("click", function () {
+    home.hide();
+    womenHome.hide();
+    menHome.hide();
+    kidsHome.hide();
+    createAccount.hide();
+    createCart.show();
+    cartArr.forEach((elem,indx)=>{
+        // const oneItem = womenProducts.find(x=>x.elem === parseInt( ))
+        console.log(womenProducts);
+    })
+  });
+  //===========================to here
 const render = () => {
   womenProducts.forEach((elem, indx) => {
     const divWomen = $(
-      `<div class="divWomen"><img src='${elem.imageSrc}'alt='${elem.title}'><h4>${elem.title}</h4> </div>`
+      `<div id='${elem.id}' class="divWomen"><img src='${elem.imageSrc}'alt='${elem.title}'><h4>${elem.title}</h4> </div>`
     );
     womenHome.append(divWomen);
-    divWomen.on("click", function () {
-      //============description==========
-      home.hide();
-      womenHome.hide();
-      womenDescription.show();
-      divImg.attr("src", `${elem.imageSrc}`);
-      divTitle.text(`${elem.title}`);
-      divDescription.text(`${elem.description}`);
-      divRate.html(stars);
-      divP.text(`Price: ${elem.price}`);
-    });
+    divWomen.on("click",renderOneItem);
     //============Add to cart==========
-    divImg.on("click", function () {
-      console.log(this);
-      createCart.show();
-      womenDescription.hide();
-      divProducts.attr("src", this.src); //should add price and total price edit img
-      div2.text(`Price: ${elem.price}`);
-      deleteItem.show();
-      console.log(divProducts);
-      deleteItem.on("click", function () {
-        div.html("");
-      });
-    });
+    
+    // divCart.on('click',()=>{
+    //     // cartArr.push(elem)
+    //     console.log(elem);
+    // })
+    // divImg.on("click", function () {
+    //   console.log(this);
+    //   createCart.show();
+    //   womenDescription.hide();
+    //   divProducts.attr("src", this.src); //should add price and total price edit img
+    //   div2.text(`Price: ${elem.price}`);
+    //   deleteItem.show();
+    //   console.log(divProducts);
+    //   deleteItem.on("click", function () {
+    //     div.html("");
+    //   });
+    // });
   });
 };
 render();
@@ -234,6 +272,7 @@ const menProducts = [
       "suit, lounge suit, or business suit is a set of clothes comprising a suit jacket and trousers of identical textiles generally worn with a collared dress shirt, necktie, and dress shoes.",
     rate: 8.5,
     price: "25JD",
+
   },
   {
     id: 2,
@@ -498,3 +537,11 @@ homeReturn6.on("click", function () {
 //=================================
 
 //=================================
+const array1=[]
+
+const newArray=products.filter((e,i)=>
+{
+    return e.category==='men'
+})
+
+read(newArray)

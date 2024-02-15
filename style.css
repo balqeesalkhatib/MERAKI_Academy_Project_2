@@ -9,6 +9,7 @@
     height: 0vh;
     display: flex;
     flex-direction: column;
+    cursor: pointer;
 }
 .name span{
     color: #EB6215;
@@ -55,13 +56,24 @@
 input{
     font-size: larger;
 }
+.cart span{
+    display: flex;
+    width: 20px;
+    height: 20px;
+    background-color: red;
+     color: #FFFfff;  
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+      
+}
 #searchInput{
     height: 35px;
-    width: 300px;
+    width: 270px;
     border-radius: 25px;
 }
 /* category */
-.womenHome, .menHome, .kidsHome{
+.womenHome, .menHome, .kidsHome, .categoryHome{
     display: flex;
     flex-direction: column;
    
@@ -160,7 +172,7 @@ input{
     font-size: x-large;
     margin-left: 25px;
     gap: 10px;
-    }
+        }
 .womenDescription img,.menDescription img,.kidsDescription img{
         width: 75%;
 }
