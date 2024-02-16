@@ -198,8 +198,9 @@ const allProducts = [
   },
 ];
 let newArray;
-const cartArr =[]
-const select=$('.it')
+const favArr = [];
+const cartArr = [];
+const select = $(".it");
 const arrayCategory = ["Women", "Men", "Kids"];
 arrayCategory.forEach((elem, indx) => {
   const newButton = $(
@@ -210,7 +211,7 @@ arrayCategory.forEach((elem, indx) => {
     filteringCategory(this.id);
     home.hide();
     categoryHome.show();
-   
+
     render(newArray);
   });
 });
@@ -226,15 +227,52 @@ const homeReturn = $(
   `<div class='homeReturn'><i class="fa-solid fa-house"></i></div>`
 );
 const products = $(`<div class="products"><b> Section</b></div>`);
+const renderFav = (cartArr) => {
+    categoryHome.html("");
+    categoryHome.append(homeReturn);
+    cartArr.forEach((e, indx) => {
+      homeReturn.on("click", function () {
+        home.show();
+        categoryHome.hide();
+           });
+           const divWomen = $(
+              `<div id='${e.id}' class="divWomen"><img src='${e.imageSrc}'alt='${e.title}'><h4>${e.title}</h4><button class='delete'> Delete</button></div>`
+            );
+            categoryHome.append(divWomen)
+            $('.delete').on("click", function (){
+               cartArr.splice(indx,1)
+                renderCart(cartArr)
+            })
+    });
+    
+  };
+const renderCart = (cartArr) => {
+  categoryHome.html("");
+  categoryHome.append(homeReturn);
+  cartArr.forEach((e, indx) => {
+    homeReturn.on("click", function () {
+      home.show();
+      categoryHome.hide();
+         });
+         const divWomen = $(
+            `<div id='${e.id}' class="divWomen"><img src='${e.imageSrc}'alt='${e.title}'><h4>${e.price}</h4><button class='delete'> Delete</button></div>`
+          );
+          categoryHome.append(divWomen)
+          $('.delete').on("click", function (){
+             cartArr.splice(indx,1)
+              renderCart(cartArr)
+          })
+  });
   
+};
 const render = (newArray) => {
-    categoryHome.html('');
-    categoryHome.append(homeReturn,products);
-         newArray.forEach((e, indx) => {
-        const womenDescription = $(
+  categoryHome.html("");
+  categoryHome.append(homeReturn, products);
+  newArray.forEach((e, indx) => {
+    const womenDescription = $(
       `<div class="womenDescription">${e.description}</div>`
     );
-    $('.it').append(womenDescription);
+    $(".it").append(womenDescription);
     womenDescription.hide();
     const divBack = $(`<div class='divBack'></div>`);
     const homeReturn4 = $(
@@ -242,7 +280,7 @@ const render = (newArray) => {
     );
     const backWomen = $(`<div class='backWomen'>Back</div>`);
     //I should add cart and fav
-    
+
     backWomen.on("click", function () {
       categoryHome.show();
       womenDescription.hide();
@@ -262,78 +300,79 @@ const render = (newArray) => {
       `<div id='${e.id}' class="divWomen"><img src='${e.imageSrc}'alt='${e.title}'><h4>${e.title}</h4> </div>`
     );
     categoryHome.append(divWomen);
-    divWomen.on("click",()=>{
-        console.log(e);
-        renderOneItem(e)
+    divWomen.on("click", () => {
+      console.log(e);
+      renderOneItem(e);
     });
   });
   //===================
 };
 
 const renderOneItem = function (e) {
-    //============description==========
-    $('.details').html('')
-    $('.details').show()
-    home.hide();
-    categoryHome.hide();
-    const homeReturn4 = $(
-        `<div class='homeReturn'><i class="fa-solid fa-house"></i></div>`
-      );
-    const divImg = $(`<img  src='${e.imageSrc}'>`);
-    const divTitle = $(`<div class="divTitle">${e.title}</div>`);
-    const divDescription = $(`<div class="divDescription"></div>`);
-    const divRate = $(`<div class="divRate">${e.rate}</div>`);
-    const divP = $(`<div class="divP">Price: ${e.price}</div>`);
-    const divReaction = $(`<div class="divReaction"></div>`);
-    const divCart = $(
-      `<div class="divCart"><i style='font-size:xx-large' class="fa-solid fa-cart-shopping"></i></div>`
-    );
-    const divFav = $(
-      `<div class="divFav"><i  style='font-size:xx-large' class="fa-solid fa-heart"></i></div>`
-    );
-    
-    // divBack.append(backWomen, homeReturn4);
-    $('.details').append(
+  //============description==========
+  $(".details").html("");
+  $(".details").show();
+  home.hide();
+  categoryHome.hide();
+  const homeReturn4 = $(
+    `<div class='homeReturn'><i class="fa-solid fa-house"></i></div>`
+  );
+  const divImg = $(`<img  src='${e.imageSrc}'>`);
+  const divTitle = $(`<div class="divTitle">${e.title}</div>`);
+  const divDescription = $(`<div class="divDescription"></div>`);
+  const divRate = $(`<div class="divRate">Rate: ${e.rate}</div>`);
+  const divP = $(`<div class="divP">Price: ${e.price}</div>`);
+  const divReaction = $(`<div class="divReaction"></div>`);
+  const divCart = $(
+    `<div class="divCart"><i style='font-size:xx-large' class="fa-solid fa-cart-shopping"></i></div>`
+  );
+  const divFav = $(
+    `<div class="divFav"><i  style='font-size:xx-large' class="fa-solid fa-heart"></i></div>`
+  );
+
+  // divBack.append(backWomen, homeReturn4);
+  $(".details").append(
     //   divBack,
     homeReturn4,
-      divTitle,
-      divImg,
-      divDescription,
-      divRate,
-      divP,
-      divCart
-    );
-    homeReturn4.on("click", function () {
-        home.show();
-        categoryHome.hide();
-        $('.details').hide()//ask know
-        
-      });
-      
-    // divReaction.append(divCart, divFav);
-   
-    // womenDescription.attr('id',oneItem.id)
-    // console.log(womenDescription);
-    // divImg.attr("src", `${oneItem.imageSrc}`);
-    // divTitle.text(`${oneItem.title}`);
-    // divDescription.text(`${oneItem.description}`);
-    // divRate.html(stars);
-    // divP.text(`Price: ${oneItem.price}`);
-    divCart.on('click',()=>{
-        cartArr.push(e)
-        console.log(cartArr);
-    })
+    divTitle,
+    divImg,
+    divDescription,
+    divRate,
+    divP,
+    divReaction
+  );
+  homeReturn4.on("click", function () {
+    home.show();
+    categoryHome.hide();
+    $(".details").hide();
+  });
 
-  }
-  $(".cart").on("click", function () {
+  divReaction.append(divCart, divFav);
+  divCart.on("click", () => {
+    cartArr.push(e);
+    console.log(cartArr);
+  });
+  divFav.on("click", () => {
+    favArr.push(e);
+    console.log(favArr);
+  });
+};
+
+$(".cart").on("click", function () {
   home.hide();
-//   womenHome.hide();
-//   menHome.hide();
-//   kidsHome.hide();
-//   createAccount.hide();
-console.log(cartArr);
-  $('.createCart').show();
-  render(cartArr)
-  renderOneItem(cartArr)
+  //   womenHome.hide();
+  //   menHome.hide();
+  //   kidsHome.hide();
+  //   createAccount.hide();
+  console.log(cartArr);
+  //   $('.createCart').show();
+  categoryHome.show();
+  //   render(cartArr);
+  renderCart(cartArr);
+});
+$(".fav").on("click", function () {
+  home.hide();
+  categoryHome.show();
+  renderFav(favArr);
 });
 // render()

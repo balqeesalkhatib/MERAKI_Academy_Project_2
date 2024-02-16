@@ -166,14 +166,14 @@ input{
     background-color: #ebaa28;
     
 }
-.womenDescription,.menDescription,.kidsDescription{
+.womenDescription,.menDescription,.kidsDescription, .details{
     display: flex;
     flex-direction: column;
     font-size: x-large;
     margin-left: 25px;
     gap: 10px;
         }
-.womenDescription img,.menDescription img,.kidsDescription img{
+.womenDescription img,.menDescription img,.kidsDescription img,  .details img{
         width: 75%;
 }
 .divReaction{
