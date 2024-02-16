@@ -198,7 +198,7 @@ const allProducts = [
   },
 ];
 let newArray;
-const favArr = [];
+const favArr = JSON.parse(localStorage.getItem("favArray"))|| [];
 const cartArr = [];
 const select = $(".it");
 const arrayCategory = ["Women", "Men", "Kids"];
@@ -227,43 +227,57 @@ const homeReturn = $(
   `<div class='homeReturn'><i class="fa-solid fa-house"></i></div>`
 );
 const products = $(`<div class="products"><b> Section</b></div>`);
+
 const renderFav = (cartArr) => {
-    categoryHome.html("");
-    categoryHome.append(homeReturn);
-    cartArr.forEach((e, indx) => {
-      homeReturn.on("click", function () {
-        home.show();
-        categoryHome.hide();
-           });
-           const divWomen = $(
-              `<div id='${e.id}' class="divWomen"><img src='${e.imageSrc}'alt='${e.title}'><h4>${e.title}</h4><button class='delete'> Delete</button></div>`
-            );
-            categoryHome.append(divWomen)
-            $('.delete').on("click", function (){
-               cartArr.splice(indx,1)
-                renderCart(cartArr)
-            })
+  categoryHome.html("");
+  categoryHome.append(homeReturn);
+ 
+  cartArr.forEach((e, indx) => {
+     const toString=JSON.stringify(cartArr);
+  localStorage.setItem("favArray",toString)
+    homeReturn.on("click", function () {
+      home.show();
+      categoryHome.hide();
     });
-    
-  };
+    const divWomen = $(
+      `<div id='${e.id}' class="divWomen"><img src='${e.imageSrc}'alt='${e.title}'><h4>${e.title}</h4><button class='delete'> Delete</button></div>`
+    );
+    categoryHome.append(divWomen);
+    $(".delete").on("click", function () {
+      cartArr.splice(indx, 1);
+      renderCart(cartArr);
+    });
+    console.log(cartArr);
+   
+  });
+};
+homeReturn.on("click", function () {
+  home.show();
+  categoryHome.hide();
+});
 const renderCart = (cartArr) => {
   categoryHome.html("");
   categoryHome.append(homeReturn);
+  homeReturn.on("click", function () {
+    home.show();
+    categoryHome.hide();
+  });
   cartArr.forEach((e, indx) => {
     homeReturn.on("click", function () {
       home.show();
       categoryHome.hide();
-         });
-         const divWomen = $(
-            `<div id='${e.id}' class="divWomen"><img src='${e.imageSrc}'alt='${e.title}'><h4>${e.price}</h4><button class='delete'> Delete</button></div>`
-          );
-          categoryHome.append(divWomen)
-          $('.delete').on("click", function (){
-             cartArr.splice(indx,1)
-              renderCart(cartArr)
-          })
+    });
+    const divWomen = $(
+      `<div id='${e.id}' class="divWomen"><img src='${e.imageSrc}'alt='${e.title}'><h4>${e.price}</h4><button class='delete' style='width: 70px; background-color: #ebaa28;'> Delete</button></div>`
+    );
+    categoryHome.append(divWomen);
+    $(".delete").on("click", function () {
+      cartArr.splice(indx, 1);
+      renderCart(cartArr);
+    });
   });
-  
+  const checkout = $(`<div class="checkout">Checkout</div>`);
+  categoryHome.append(checkout);
 };
 const render = (newArray) => {
   categoryHome.html("");
