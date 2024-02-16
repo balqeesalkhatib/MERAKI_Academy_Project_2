@@ -27,6 +27,7 @@
     flex-wrap: wrap;
     padding: 40px;
     background-color: #ebaa28;
+    font-size: x-large;
 }
 .pic2, .pic1, .pic3{
     display: flex;

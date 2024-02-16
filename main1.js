@@ -9,24 +9,24 @@ const mainContains =
   $(`<div class='name' style='font-size:xx-large'><b><span>Family</span> Shop</b></div>
 <div class='search'><input type="search" id="searchInput" placeholder="What can we help you find?"></div>
 <div class='account' style='font-size:xx-large'><i class="fa-solid fa-user"></i></div>
-<div class='cart' ><i style='font-size:xx-large' class="fa-solid fa-cart-shopping"></i><span> 0 </span></div>
+<div class='cart' ><i style='font-size:xx-large' class="fa-solid fa-cart-shopping"></i></div>
 <div class='fav' style='font-size:xx-large'><i class="fa-solid fa-heart"></i></div>`);
 main.append(mainContains);
-$("#searchInput").on("click", function () {
-  if ($("#searchInput").val() === "Women".toLowerCase()) {
-    home.hide();
-    womenHome.show();
-  } else if ($("#searchInput").val() === "MEN".toLowerCase()) {
-    home.hide();
-    home.hide();
-    menHome.show();
-  } else if ($("#searchInput").val() === "kids".toLowerCase()) {
-    home.hide();
-    kidsHome.show();
-  } else {
-    $("#searchInput").val("");
-  }
-});
+// $("#searchInput").on("click", function () {
+//   if ($("#searchInput").val() === "Women".toLowerCase()) {
+//     home.hide();
+//     womenHome.show();
+//   } else if ($("#searchInput").val() === "MEN".toLowerCase()) {
+//     home.hide();
+//     home.hide();
+//     menHome.show();
+//   } else if ($("#searchInput").val() === "kids".toLowerCase()) {
+//     home.hide();
+//     kidsHome.show();
+//   } else {
+//     $("#searchInput").val("");
+//   }
+// });
 $(".account").on("click", function () {
   home.hide();
   womenHome.hide();
@@ -203,7 +203,7 @@ const cartArr = [];
 const select = $(".it");
 const arrayCategory = ["Women", "Men", "Kids"];
 arrayCategory.forEach((elem, indx) => {
-  const newButton = $(
+      const newButton = $(
     `<div id=${indx} class=${elem.categoryArray}>${elem}</div>`
   );
   category.append(newButton);
@@ -251,6 +251,27 @@ const renderFav = (cartArr) => {
    
   });
 };
+const renderCheckout=()=>{
+    categoryHome.html("");
+  categoryHome.append(homeReturn);
+  cartArr.forEach((e, indx) => {
+    const divWomen = $(
+        `<div id='${e.id}' class="divCat"><img src='${e.imageSrc}'alt='${e.title}'><h4>${e.price}</h4></div>`
+      );
+      categoryHome.append(divWomen) 
+  })
+  const location = $(
+    ` <label>Location:</label><input type="text" placeholder="City, street, building number">`
+  );
+  const cash=$(`<div class="cash">Payment Method:<input type="radio" > cash <input type="radio" >visa</div>`)
+  const send=$(`<div class="send"><button>Send</button></div>`)
+  categoryHome.append(location,cash,send);
+  send.on('click', function () {
+    home.show()
+    categoryHome.hide()
+    cartArr.splice(0,cartArr.length)
+     })
+}
 homeReturn.on("click", function () {
   home.show();
   categoryHome.hide();
@@ -276,8 +297,15 @@ const renderCart = (cartArr) => {
       renderCart(cartArr);
     });
   });
-  const checkout = $(`<div class="checkout">Checkout</div>`);
+  const checkout = $(`<button class="checkout">Checkout</button>`);
   categoryHome.append(checkout);
+  checkout.on("click",function (){
+    // categoryHome.hide()
+    // $('checkoutHome').show()
+    console.log(cartArr);
+    renderCheckout(cartArr)
+    
+  })
 };
 const render = (newArray) => {
   categoryHome.html("");
@@ -293,9 +321,7 @@ const render = (newArray) => {
       `<div class='homeReturn'><i class="fa-solid fa-house"></i></div>`
     );
     const backWomen = $(`<div class='backWomen'>Back</div>`);
-    //I should add cart and fav
-
-    backWomen.on("click", function () {
+       backWomen.on("click", function () {
       categoryHome.show();
       womenDescription.hide();
     });
