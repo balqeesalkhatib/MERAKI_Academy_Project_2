@@ -78,8 +78,11 @@ input{
 .womenHome, .menHome, .kidsHome, .categoryHome{
     display: flex;
     flex-direction: column;
-   
+      
 }
+.location,.cash,.send{
+    display: flex;
+      }
 .homeReturn,.homeReturn1,.homeReturn2{
     display: flex;
     justify-content: flex-end;

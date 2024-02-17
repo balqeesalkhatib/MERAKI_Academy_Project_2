@@ -199,6 +199,7 @@ const allProducts = [
 ];
 let newArray;
 const favArr = JSON.parse(localStorage.getItem("favArray"))|| [];
+let deletedArray= [];
 const cartArr = [];
 const select = $(".it");
 const arrayCategory = ["Women", "Men", "Kids"];
@@ -227,11 +228,17 @@ const homeReturn = $(
   `<div class='homeReturn'><i class="fa-solid fa-house"></i></div>`
 );
 const products = $(`<div class="products"><b> Section</b></div>`);
-
+homeReturn.on("click", function () {
+    home.show();
+    categoryHome.hide();
+  });
 const renderFav = (cartArr) => {
   categoryHome.html("");
   categoryHome.append(homeReturn);
- 
+  homeReturn.on("click", function () {
+    home.show();
+    categoryHome.hide();
+  });
   cartArr.forEach((e, indx) => {
      const toString=JSON.stringify(cartArr);
   localStorage.setItem("favArray",toString)
@@ -245,15 +252,24 @@ const renderFav = (cartArr) => {
     categoryHome.append(divWomen);
     $(".delete").on("click", function () {
       cartArr.splice(indx, 1);
-      renderCart(cartArr);
+      
+      deletedArray=cartArr;
+      const stringDelete=JSON.stringify(deletedArray);
+      localStorage.setItem("deletedArray",stringDelete)
+      console.log(deletedArray);
+      renderCart(deletedArray);
     });
-    console.log(cartArr);
+   
    
   });
 };
 const renderCheckout=()=>{
     categoryHome.html("");
   categoryHome.append(homeReturn);
+  homeReturn.on("click", function () {
+    home.show();
+    categoryHome.hide();
+  });
   cartArr.forEach((e, indx) => {
     const divWomen = $(
         `<div id='${e.id}' class="divCat"><img src='${e.imageSrc}'alt='${e.title}'><h4>${e.price}</h4></div>`
@@ -261,7 +277,7 @@ const renderCheckout=()=>{
       categoryHome.append(divWomen) 
   })
   const location = $(
-    ` <label>Location:</label><input type="text" placeholder="City, street, building number">`
+    ` <div class="location"><label>Location:</label><input type="text" placeholder="City, street, building number"></div>`
   );
   const cash=$(`<div class="cash">Payment Method:<input type="radio" > cash <input type="radio" >visa</div>`)
   const send=$(`<div class="send"><button>Send</button></div>`)
@@ -294,7 +310,9 @@ const renderCart = (cartArr) => {
     categoryHome.append(divWomen);
     $(".delete").on("click", function () {
       cartArr.splice(indx, 1);
-      renderCart(cartArr);
+       deletedArray=cartArr;
+      console.log(deletedArray);
+      renderCart(deletedArray);
     });
   });
   const checkout = $(`<button class="checkout">Checkout</button>`);
