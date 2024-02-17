@@ -7,12 +7,12 @@ const main = $(`<div class='main'></div>`);
 home.append(main);
 const mainContains =
   $(`<div class='name' style='font-size:xx-large'><b><span>Family</span> Shop</b></div>
-<div class='search'><input type="search" id="searchInput" placeholder="What can we help you find?"></div>
+<div class='search'><form><i class='fas fa-search'></i><input type="search" id="searchInput" placeholder="What can we help you find?"></form></div>
 <div class='account' style='font-size:xx-large'><i class="fa-solid fa-user"></i></div>
 <div class='cart' ><i style='font-size:xx-large' class="fa-solid fa-cart-shopping"></i></div>
 <div class='fav' style='font-size:xx-large'><i class="fa-solid fa-heart"></i></div>`);
 main.append(mainContains);
-$("#searchInput").on("click", function () {
+$(".search form i").on("click", function () {
   if ($("#searchInput").val() === "Women".toLowerCase()) {
     home.hide();
     categoryHome.show();
