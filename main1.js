@@ -614,8 +614,8 @@ const registerFun=()=>{
     let newUser={
         email: $('.userEmail').val(),
         password: $('.userPass').val(),}
-        registeredUsers .push(newUser)
-        console.log(registeredUsers);
+        user.push(newUser)
+        console.log(user);
 }
 register.on('click', registerFun)
 
@@ -646,22 +646,26 @@ const user = [
   { id: 2, email: "hello@gmail.com", password: "hello" },
 ];
 const loginEmail = () => {
-  if (
-    $(".user").val() === user[0].email &&
-    $(".pass").val() === user[0].password
-  ) {
-    home.show();
-    logIn.hide();
-  } else if (
-    $(".user").val() === user[1].email &&
-    $(".pass").val() === user[1].password
-  ) {
-    home.show();
-    logIn.hide();
-  } else {
-    createAccount.show();
-    logIn.hide();
-    alert("you have to register first");
-  }
+    console.log(user)
+    for(k=0; k< user.length; k++){
+        console.log(  $(".user").val() === user[k].email &&
+        $(".pass").val() === user[k].password);
+        if (
+            $(".user").val() === user[k].email &&
+            $(".pass").val() === user[k].password
+          ) {
+            home.show();
+            logIn.hide();
+            createAccount.hide();
+            break
+          }
+          else {
+            createAccount.show();
+            logIn.hide();
+            home.hide();
+            // alert("you have to register first");
+          }
+    }
+ 
 };
 logInToYourAccount.on("click", loginEmail);
