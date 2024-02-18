@@ -118,7 +118,6 @@ $(".search form i").on("click", function () {
       },
     ]);
   } else if ($("#searchInput").val() === "kids".toLowerCase()) {
-    console.log("gg");
     home.hide();
     categoryHome.show();
     render([
@@ -168,12 +167,10 @@ $(".search form i").on("click", function () {
   }
 });
 $(".account").on("click", function () {
-  console.log("k");
   home.hide();
   createAccount.show();
 });
 $(".log").on("click", function () {
-  console.log("k");
   home.hide();
   logIn.show();
 });
@@ -368,15 +365,11 @@ arrayCategory.forEach((elem, indx) => {
 
 const readProduct = (data) => {
   all = data;
-  console.log(all);
 };
 const filteringCategory = (indx) => {
-  console.log(indx);
-  console.log(all);
   newArray = all.filter((elem) => {
     return elem.category == arrayCategory[indx];
   });
-  console.log(newArray);
 };
 const categoryHome = $(`<div class="categoryHome"></div>`);
 select.append(categoryHome);
@@ -413,7 +406,6 @@ const renderFav = (cartArr) => {
       deletedArray = cartArr;
       const stringDelete = JSON.stringify(deletedArray);
       localStorage.setItem("deletedArray", stringDelete);
-      console.log(deletedArray);
       renderCart(deletedArray);
     });
   });
@@ -468,26 +460,19 @@ const renderCart = (cartArr) => {
     $(".delete").on("click", function () {
       cartArr.splice(indx, 1);
       deletedArray = cartArr;
-      console.log(deletedArray);
       renderCart(deletedArray);
     });
   });
   const checkout = $(`<button class="checkout">Checkout</button>`);
   categoryHome.append(checkout);
   checkout.on("click", function () {
-    // categoryHome.hide()
-    // $('checkoutHome').show()
-    console.log(cartArr);
     renderCheckout(cartArr);
   });
 };
 const render = (newArray) => {
-  console.log(newArray);
   categoryHome.html("");
   categoryHome.append(homeReturn, products);
   newArray.forEach((e, indx) => {
-    console.log(e.image);
-    console.log(e.category);
     const womenDescription = $(
       `<div class="womenDescription">${e.description}</div>`
     );
@@ -518,7 +503,6 @@ const render = (newArray) => {
     );
     categoryHome.append(divWomen);
     divWomen.on("click", () => {
-      console.log(e);
       renderOneItem(e);
     });
   });
@@ -567,17 +551,14 @@ const renderOneItem = function (e) {
   divReaction.append(divCart, divFav);
   divCart.on("click", () => {
     cartArr.push(e);
-    console.log(cartArr);
   });
   divFav.on("click", () => {
     favArr.push(e);
-    console.log(favArr);
   });
 };
 
 $(".cart").on("click", function () {
   home.hide();
-  console.log(cartArr);
   categoryHome.show();
   //   render(cartArr);
   renderCart(cartArr);
@@ -615,9 +596,8 @@ const registerFun = () => {
     password: $(".userPass").val(),
   };
   user.push(newUser);
-  let userString=JSON.stringify(user)
-  localStorage.setItem('user',userString)
-  console.log(user);
+  let userString = JSON.stringify(user);
+  localStorage.setItem("user", userString);
 };
 register.on("click", registerFun);
 //==============log in=================
@@ -638,14 +618,9 @@ homeReturn4.on("click", function () {
   logIn.hide();
 });
 //====================
-const user = JSON.parse(localStorage.getItem('user'))||[];
+const user = JSON.parse(localStorage.getItem("user")) || [];
 const loginEmail = () => {
-  console.log(user);
   for (k = 0; k < user.length; k++) {
-    console.log(
-      $(".user").val() === user[k].email &&
-        $(".pass").val() === user[k].password
-    );
     if (
       $(".user").val() === user[k].email &&
       $(".pass").val() === user[k].password
