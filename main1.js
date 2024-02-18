@@ -617,7 +617,7 @@ const homeReturn4 = $(
   );
 const logInAccount =
   $(`<div class="nameAccount" style="font-size: xx-large;">Login Form</div>
-<label> Email:</label> <br><input placeholder="Enter your email" type="email" required><br><label> Password:</label> <br><input placeholder="Enter your password" type="password" required><br>`)
+<label> Email:</label> <br><input placeholder="Enter your email" type="email" required class='user'><br><label> Password:</label> <br><input placeholder="Enter your password" type="password" required class='pass'><br>`)
 logIn.append(homeReturn4,logInAccount);
 const logInToYourAccount = $(` <button>Login</button>`);
 logIn.append(logInToYourAccount)
@@ -625,4 +625,29 @@ homeReturn4.on("click", function () {
     home.show();
     logIn.hide();
       });
+//====================
+const user=[{
+    id:1,
+    email:'jan@gamil.com',
+    password:'123456'
+},{ id:2,
+    email:'hello@gmail.com',
+    password:'hello'}];
+const loginEmail=()=>{
+
+    if($('.user').val()===user[0].email && $('.pass').val()===user[0].password){
+    home.show();
+    logIn.hide();
+}
+else if($('.user').val()===user[1].email && $('.pass').val()===user[1].password){
+    home.show();
+    logIn.hide();
+}
+else{
+    createAccount.show();
+    logIn.hide();
+    alert('you have to register first')
+}
+}
+logInToYourAccount.on('click', loginEmail)
 
