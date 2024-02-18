@@ -588,7 +588,7 @@ $(".fav").on("click", function () {
   renderFav(favArr);
 });
 //===================
-let registeredUsers = [];// should add to local storage
+
 const createAccount = $(`<div class="createAccount"></div>`);
 body.append(createAccount);
 createAccount.hide();
@@ -609,16 +609,17 @@ homeReturn3.on("click", function () {
   createAccount.hide();
 });
 //========================
-
-const registerFun=()=>{
-    let newUser={
-        email: $('.userEmail').val(),
-        password: $('.userPass').val(),}
-        user.push(newUser)
-        console.log(user);
-}
-register.on('click', registerFun)
-
+const registerFun = () => {
+  let newUser = {
+    email: $(".userEmail").val(),
+    password: $(".userPass").val(),
+  };
+  user.push(newUser);
+  let userString=JSON.stringify(user)
+  localStorage.setItem('user',userString)
+  console.log(user);
+};
+register.on("click", registerFun);
 //==============log in=================
 const logIn = $(`<div class="logIn1"></div>`);
 $(".logIn").append(logIn);
@@ -637,35 +638,28 @@ homeReturn4.on("click", function () {
   logIn.hide();
 });
 //====================
-const user = [
-  {
-    id: 1,
-    email: "jan@gamil.com",
-    password: "123456",
-  },
-  { id: 2, email: "hello@gmail.com", password: "hello" },
-];
+const user = JSON.parse(localStorage.getItem('user'))||[];
 const loginEmail = () => {
-    console.log(user)
-    for(k=0; k< user.length; k++){
-        console.log(  $(".user").val() === user[k].email &&
-        $(".pass").val() === user[k].password);
-        if (
-            $(".user").val() === user[k].email &&
-            $(".pass").val() === user[k].password
-          ) {
-            home.show();
-            logIn.hide();
-            createAccount.hide();
-            break
-          }
-          else {
-            createAccount.show();
-            logIn.hide();
-            home.hide();
-            // alert("you have to register first");
-          }
+  console.log(user);
+  for (k = 0; k < user.length; k++) {
+    console.log(
+      $(".user").val() === user[k].email &&
+        $(".pass").val() === user[k].password
+    );
+    if (
+      $(".user").val() === user[k].email &&
+      $(".pass").val() === user[k].password
+    ) {
+      home.show();
+      logIn.hide();
+      createAccount.hide();
+      break;
+    } else {
+      createAccount.show();
+      logIn.hide();
+      home.hide();
+      alert("you have to register first");
     }
- 
+  }
 };
 logInToYourAccount.on("click", loginEmail);
