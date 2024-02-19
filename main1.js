@@ -229,15 +229,15 @@ $('.newArrival').on("click", function () {
 })
 let newArray;
 const favArr = JSON.parse(localStorage.getItem("favArray")) || [];
-let deletedArray = [];
+let deletedArray = JSON.parse(localStorage.getItem("deletedArray")) ||[];
 const cartArr = [];
 let all;
 const select = $(".it");
 const arrayCategory = [
-  "women's clothing",
-  "men's clothing",
-  "jewelery",
-  "electronics",
+  "Women's clothing",
+  "Men's clothing",
+  "Jewelery",
+  "Electronics",
 ];
 arrayCategory.forEach((elem, indx) => {
   const newButton = $(
@@ -258,7 +258,7 @@ const readProduct = (data) => {
  };
 const filteringCategory = (indx) => {
   newArray = all.filter((elem) => {
-    return elem.category == arrayCategory[indx];
+    return elem.category == arrayCategory[indx].toLowerCase();
   });
  };
 const categoryHome = $(`<div class="categoryHome"></div>`);
@@ -290,16 +290,21 @@ const renderFav = (cartArr) => {
       `<div id='${e.id}' class="divWomen"><img src='${e.image}'alt='${e.title}'><h4>${e.title}</h4><button class='delete'> Delete</button></div>`
     );
     categoryHome.append(divWomen);
-    $(".delete").on("click", function () {
-      cartArr.splice(indx, 1);
-
-      deletedArray = cartArr;
-      const stringDelete = JSON.stringify(deletedArray);
-      localStorage.setItem("deletedArray", stringDelete);
-          renderCart(deletedArray);
+    $(".delete").on("click",  ()=> {
+        deleteFun(cartArr,indx)
     });
   });
 };
+const deleteFun=(cartArr,indx)=>{
+    cartArr.splice(indx, 1);
+
+    //   deletedArray = cartArr;
+    //   const stringDelete = JSON.stringify(deletedArray);
+    //   localStorage.setItem("deletedArray", stringDelete);
+          renderFav(cartArr);
+          console.log(favArr);
+          console.log(cartArr);
+}
 const renderCheckout = () => {
   categoryHome.html("");
   categoryHome.append(homeReturn);
@@ -475,7 +480,9 @@ const nameAccount =
 <br><div>By creating an account you agree to our terms and privacy: <br>
 I agree<input type="radio" required></div><br>`);
 const register = $(` <button>Sign up</button>`);
-createAccount.append(homeReturn3, nameAccount, register);
+const design1=$(`<div class="design1"></div>`)
+createAccount.append(homeReturn3, design1);
+design1.append(nameAccount, register)
 homeReturn3.on("click", function () {
   home.show();
   createAccount.hide();
@@ -499,11 +506,13 @@ const homeReturn4 = $(
   `<div class='homeReturn3'><i class="fa-solid fa-house"></i></div>`
 );
 const logInAccount =
-  $(`<div class="nameAccount" style="font-size: xx-large;">Login Form</div>
+  $(`<div class="nameAccount1" style="font-size: xx-large;">Login Form</div>
 <label> Email:</label> <br><input placeholder="Enter your email" type="email" required class='user'><br><label> Password:</label> <br><input placeholder="Enter your password" type="password" required class='pass'><br>`);
-logIn.append(homeReturn4, logInAccount);
+const design=$(`<div class="design"></div>`)
+logIn.append(homeReturn4,design);
 const logInToYourAccount = $(` <button>Login</button>`);
-logIn.append(logInToYourAccount);
+design.append( logInAccount, logInToYourAccount)
+// logIn.append(logInToYourAccount);
 homeReturn4.on("click", function () {
   home.show();
   logIn.hide();
