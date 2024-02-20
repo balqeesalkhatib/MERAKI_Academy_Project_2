@@ -309,7 +309,7 @@ const allProducts = [
       "Beautiful lady overjoyed by warm spring breeze dream of romantic date wear cute floral dress isolated pink background stock photo",
     rate: 8.5,
     price: "33 JD",
-    categoryArray: "women",
+    category: "New Arrival",
   },
   {
     id: 2,
@@ -320,7 +320,7 @@ const allProducts = [
       "Using the word sophisticated can convey a sense of class and elegance that is attractive and timeless. Describing outfits and women's dresses can be a challenge, but using creative",
     rate: 10,
     price: "45 JD",
-    categoryArray: "women",
+    category: "women",
   },
   {
     id: 3,
@@ -331,7 +331,7 @@ const allProducts = [
       "fashion is the most general term and applies to any way of dressing, behaving, writing, or performing that is favored at any one time or place",
     rate: 9.5,
     price: "30 JD",
-    categoryArray: "women",
+    category: "women",
   },
   {
     id: 4,
@@ -341,7 +341,7 @@ const allProducts = [
       " dress (also known as a frock or a gown) is a garment traditionally worn by women or girls consisting of a skirt with an attached bodice (or a matching bodice giving the effect of a one-piece garment)",
     rate: 10,
     price: "50 JD",
-    categoryArray: "women",
+    category: "women",
   },
   {
     id: 1,
@@ -352,7 +352,7 @@ const allProducts = [
       "suit, lounge suit, or business suit is a set of clothes comprising a suit jacket and trousers of identical textiles generally worn with a collared dress shirt, necktie, and dress shoes.",
     rate: 8.5,
     price: "25JD",
-    categoryArray: "men",
+    category: "men",
   },
   {
     id: 2,
@@ -362,7 +362,7 @@ const allProducts = [
       "The most important quality of a good suit is a jacket that has a full canvas layer between the fabric and lining.",
     rate: 9,
     price: "35 JD",
-    categoryArray: "men",
+    category: "men",
   },
   {
     id: 3,
@@ -373,7 +373,7 @@ const allProducts = [
       "The most important quality of a good suit is a jacket that has a full canvas layer between the fabric and lining.",
     rate: 9.5,
     price: "15JD",
-    categoryArray: "men",
+    category: "men",
   },
   {
     id: 4,
@@ -384,7 +384,7 @@ const allProducts = [
       " Wearing a suit signifies that you are taking the other person more seriously and are striving to stand up to their expectations",
     rate: 10,
     price: "75 JD",
-    categoryArray: "men",
+    category: "men",
   },
   {
     id: 1,
@@ -395,7 +395,7 @@ const allProducts = [
       "comfortable, soft and easy to take care of. Stretchy jumpsuits that fasten at the front are best, as well as tops with envelope necks, which are easier to get over your baby's head. Jumpsuits with zips can make dressing your baby quick and easy too.",
     rate: 9.5,
     price: "25JD",
-    categoryArray: "kids",
+    category: "kids",
   },
   {
     id: 2,
@@ -406,7 +406,7 @@ const allProducts = [
       "a lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment",
     rate: 10,
     price: "7JD",
-    categoryArray: "kids",
+    category: "kids",
   },
   {
     id: 3,
@@ -417,7 +417,7 @@ const allProducts = [
       "one of the more important attributes to look for in infant and baby clothing is that the clothes are soft and not rough. Soft baby clothes made from organic cotton or eco-friendly materials are becoming more popular.",
     rate: 8.5,
     price: "35JD",
-    categoryArray: "kids",
+    category: "kids",
   },
   {
     id: 4,
@@ -428,7 +428,7 @@ const allProducts = [
       "Comfort and Skin Sensitivity: Babies have delicate and sensitive skin, making it crucial to prioritize their comfort. ",
     rate: 9,
     price: "2JD",
-    categoryArray: "kids",
+    category: "kids",
   },
 ];
 let starsNumber = [];
