@@ -182,7 +182,7 @@
     gap: 40px; 
 }
 .div{
-    display: flex;  
+       display: flex;  
     flex-direction: row; 
 }
 .divProducts{
@@ -207,9 +207,9 @@
     display: flex;
     flex-direction: column;
     font-size: x-large;
-    margin-left: 25px;
-    gap: 10px;
-    }
+       gap: 10px;
+       height: 0vh;
+       }
 .womenDescription img,.menDescription img,.kidsDescription img,  .details img{
         width: 25%;
 }
@@ -245,10 +245,11 @@ width: 0%;
     content: "\f005 \f005 \f005 \f005 \f005";
     font-family: 'Font Awesome 5 Free';
     font-weight: 900;
+    color: rgb(82, 78, 78);
     }
 .inner::before{
     content: "\f005 \f005 \f005 \f005 \f005";
     font-family: 'Font Awesome 5 Free';
     font-weight: 900;
-    color: orange;
+    color:#ebaa28;
 }
