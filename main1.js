@@ -2,8 +2,7 @@ $.ajax({
   url: "https://fakestoreapi.com/products",
   success: (data) => {
     readProduct(data);
-    console.log(data);
-  },
+     },
   error: (err) => {
     renderFail("Oooops!! Server Error  O_o");
   },
@@ -23,7 +22,6 @@ const mainContains =
 <div class='search'><form><i class='fas fa-search'></i><input type="search" id="searchInput" placeholder="What can we help you find?"></form></div>
 <div class='account' style='font-size:xx-large'><i class="fa-solid fa-user"></i></div>
 <div class='log' style='font-size:xx-large'><i class="fa-solid fa-right-to-bracket"></i></div>
-
 <div class='cart' ><i style='font-size:xx-large' class="fa-solid fa-cart-shopping"></i></div>
 <div class='fav' style='font-size:xx-large'><i class="fa-solid fa-heart"></i></div>`);
 main.append(mainContains);
@@ -433,14 +431,13 @@ const allProducts = [
 ];
 let starsNumber = [];
 $(".newArrival").on("click", function () {
-  console.log("lll");
   home.hide();
   categoryHome.show();
   render(allProducts);
 });
 let newArray;
 const favArr = JSON.parse(localStorage.getItem("favArray")) || [];
-let deletedArray = JSON.parse(localStorage.getItem("deletedArray")) || [];
+// let deletedArr = JSON.parse(localStorage.getItem("deletedArray")) || [];
 const cartArr = [];
 let all;
 const select = $(".it");
@@ -463,7 +460,6 @@ arrayCategory.forEach((elem, indx) => {
     render(newArray);
   });
 });
-
 const readProduct = (data) => {
   all = data;
 };
@@ -508,13 +504,8 @@ const renderFav = (cartArr) => {
 };
 const deleteFun = (cartArr, indx) => {
   cartArr.splice(indx, 1);
-
-  //   deletedArray = cartArr;
-  //   const stringDelete = JSON.stringify(deletedArray);
-  //   localStorage.setItem("deletedArray", stringDelete);
+  localStorage.removeItem("favArray", toString)
   renderFav(cartArr);
-  console.log(favArr);
-  console.log(cartArr);
 };
 const renderCheckout = () => {
   categoryHome.html("");
@@ -555,6 +546,8 @@ const renderCart = (cartArr) => {
     categoryHome.hide();
   });
   cartArr.forEach((e, indx) => {
+    // const toString1 = JSON.stringify(cartArr);
+    // localStorage.setItem("deletedArray", toString1);
     homeReturn.on("click", function () {
       home.show();
       categoryHome.hide();
@@ -565,8 +558,8 @@ const renderCart = (cartArr) => {
     categoryHome.append(divWomen);
     $(".delete").on("click", function () {
       cartArr.splice(indx, 1);
-      deletedArray = cartArr;
-      renderCart(deletedArray);
+        // localStorage.removeItem("deletedArray", toString1)
+      renderCart(cartArr);
     });
   });
   const checkout = $(`<button class="checkout">Checkout</button>`);
@@ -576,8 +569,7 @@ const renderCart = (cartArr) => {
   });
 };
 const render = (newArray) => {
-  console.log(newArray);
-  categoryHome.html("");
+   categoryHome.html("");
   categoryHome.append(homeReturn, products);
   newArray.forEach((e, indx) => {
     const womenDescription = $(
@@ -604,8 +596,7 @@ const render = (newArray) => {
       home.show();
       categoryHome.hide();
     });
-    //========
-    const divWomen = $(
+      const divWomen = $(
       `<div id='${e.id}' class="divWomen"><img src='${e.image}'alt='${e.title}'><h4>${e.title}</h4> </div>`
     );
     categoryHome.append(divWomen);
@@ -613,9 +604,7 @@ const render = (newArray) => {
       renderOneItem(e);
     });
   });
-  //===================
 };
-
 const renderOneItem = function (e) {
   //============description==========
   starsNumber.push(e.rating.rate);
@@ -668,12 +657,11 @@ const renderOneItem = function (e) {
     favArr.push(e);
   });
 };
-
 $(".cart").on("click", function () {
   home.hide();
   categoryHome.show();
-  //   render(cartArr);
-  renderCart(cartArr);
+  console.log(cartArr);
+    renderCart(cartArr);//
 });
 $(".fav").on("click", function () {
   home.hide();
@@ -681,7 +669,6 @@ $(".fav").on("click", function () {
   renderFav(favArr);
 });
 //===================
-
 const createAccount = $(`<div class="createAccount"></div>`);
 body.append(createAccount);
 createAccount.hide();
@@ -712,6 +699,8 @@ const registerFun = () => {
   user.push(newUser);
   let userString = JSON.stringify(user);
   localStorage.setItem("user", userString);
+  home.show();
+  createAccount.hide();
 };
 register.on("click", registerFun);
 //==============log in=================
@@ -725,6 +714,7 @@ const logInAccount =
   $(`<div class="nameAccount1" style="font-size: xx-large;">Login Form</div>
 <label> Email:</label> <br><input placeholder="Enter your email" type="email" required class='user'><br><label> Password:</label> <br><input placeholder="Enter your password" type="password" required class='pass'><br>`);
 const design = $(`<div class="design"></div>`);
+const info = $(`<p>"you have to register first"</p>`);
 logIn.append(homeReturn4, design);
 const logInToYourAccount = $(` <button>Login</button>`);
 design.append(logInAccount, logInToYourAccount);
@@ -749,7 +739,7 @@ const loginEmail = () => {
       createAccount.show();
       logIn.hide();
       home.hide();
-      alert("you have to register first");
+      //   alert("you have to register first");
     }
   }
 };
