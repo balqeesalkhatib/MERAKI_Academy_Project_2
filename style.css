@@ -21,6 +21,9 @@
     padding: 40px;
     background-color: #FFFABA;
    }
+   .name,.search,.account,.log,.fav,.cart{
+    padding: 5px;
+   }
 .category{
     display: flex;
     justify-content: space-around;
@@ -49,6 +52,9 @@
 .darkMode{
     background-color: black;
     color: #EB6215;
+    .category{
+        color: black;
+    }
     /* color: #EBAA28; */
 }
 .lightMode{
@@ -252,4 +258,13 @@ width: 0%;
     font-family: 'Font Awesome 5 Free';
     font-weight: 900;
     color:#ebaa28;
+}
+.delete{
+    margin-bottom: 30px;
+}
+.divDescription{
+    font-size: 80%;
+}
+.divCat img{
+    width: 40%;
 }

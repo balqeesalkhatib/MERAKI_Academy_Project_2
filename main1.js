@@ -8,6 +8,8 @@ $.ajax({
   },
 });
 //==============Home page==============
+let usersInfo=[];
+let users=[];
 const body = $("body");
 const renderFail = (err) => {
   body.text(err);
@@ -480,6 +482,7 @@ homeReturn.on("click", function () {
   categoryHome.hide();
 });
 const renderFav = (cartArr) => {
+    console.log(cartArr);
   categoryHome.html("");
   categoryHome.append(homeReturn);
   homeReturn.on("click", function () {
@@ -507,6 +510,7 @@ const deleteFun = (cartArr, indx) => {
   localStorage.removeItem("favArray", toString)
   renderFav(cartArr);
 };
+let counter=0;
 const renderCheckout = () => {
   categoryHome.html("");
   categoryHome.append(homeReturn);
@@ -515,7 +519,8 @@ const renderCheckout = () => {
     categoryHome.hide();
   });
   cartArr.forEach((e, indx) => {
-    const divWomen = $(
+    counter=counter+e.price;
+     const divWomen = $(
       `<div id='${e.id}' class="divCat"><img src='${e.image}'alt='${e.title}'><h4>${e.price}</h4></div>`
     );
     categoryHome.append(divWomen);
@@ -526,8 +531,9 @@ const renderCheckout = () => {
   const cash = $(
     `<div class="cash">Payment Method:<input type="radio" > cash <input type="radio" >visa</div>`
   );
+  const totalP=$(`<div class="totalP">Total Amount: ${counter} $</div>`)
   const send = $(`<div class="send"><button>Send</button></div>`);
-  categoryHome.append(location, cash, send);
+  categoryHome.append(location, cash,totalP, send);
   send.on("click", function () {
     home.show();
     categoryHome.hide();
@@ -619,7 +625,7 @@ const renderOneItem = function (e) {
   const rounded = `${Math.round(starPersantage / 10) * 10}%`;
   const divImg = $(`<img  src='${e.image}'>`);
   const divTitle = $(`<div class="divTitle">${e.title}</div>`);
-  const divDescription = $(`<div class="divDescription"></div>`);
+  const divDescription = $(`<div class="divDescription">${e.description}</div>`);
   const divRate = $(
     `<div class="divRate">Rate: <div class="outer"><div class="inner" style="width:${rounded} ;"></div></div> <span class="number-Rating"></span> </div>`
   );
@@ -655,13 +661,15 @@ const renderOneItem = function (e) {
   });
   divFav.on("click", () => {
     favArr.push(e);
+    usersInfo.push({'one':e, 'two': users[0]})
+    console.log(favArr);
+    console.log(usersInfo);
   });
 };
 $(".cart").on("click", function () {
   home.hide();
   categoryHome.show();
-  console.log(cartArr);
-    renderCart(cartArr);//
+     renderCart(cartArr);//
 });
 $(".fav").on("click", function () {
   home.hide();
@@ -696,6 +704,7 @@ const registerFun = () => {
     email: $(".userEmail").val(),
     password: $(".userPass").val(),
   };
+  users.push($(".userEmail").val())
   user.push(newUser);
   let userString = JSON.stringify(user);
   localStorage.setItem("user", userString);
@@ -724,8 +733,10 @@ homeReturn4.on("click", function () {
   logIn.hide();
 });
 //====================
+
 const user = JSON.parse(localStorage.getItem("user")) || [];
 const loginEmail = () => {
+    
   for (k = 0; k < user.length; k++) {
     if (
       $(".user").val() === user[k].email &&
@@ -734,7 +745,7 @@ const loginEmail = () => {
       home.show();
       logIn.hide();
       createAccount.hide();
-      break;
+          break;
     } else {
       createAccount.show();
       logIn.hide();
