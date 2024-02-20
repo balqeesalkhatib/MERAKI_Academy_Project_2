@@ -476,7 +476,7 @@ categoryHome.hide();
 const homeReturn = $(
   `<div class='homeReturn'><i class="fa-solid fa-house"></i></div>`
 );
-const products = $(`<div class="products"><b> Section</b></div>`);
+
 homeReturn.on("click", function () {
   home.show();
   categoryHome.hide();
@@ -576,6 +576,8 @@ const renderCart = (cartArr) => {
 };
 const render = (newArray) => {
    categoryHome.html("");
+  
+   const products = $(`<div class="products"><b>${(newArray[0].category).toUpperCase()}</b></div>`);
   categoryHome.append(homeReturn, products);
   newArray.forEach((e, indx) => {
     const womenDescription = $(
