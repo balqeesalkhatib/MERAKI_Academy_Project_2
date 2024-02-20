@@ -586,21 +586,12 @@ const render = (newArray) => {
     $(".it").append(womenDescription);
     womenDescription.hide();
     const divBack = $(`<div class='divBack'></div>`);
-    const homeReturn4 = $(
-      `<div class='homeReturn'><i class="fa-solid fa-house"></i></div>`
-    );
-    const backWomen = $(`<div class='backWomen'>Back</div>`);
+       const backWomen = $(`<div class='backWomen'>Back</div>`);
     backWomen.on("click", function () {
       categoryHome.show();
       womenDescription.hide();
     });
-    // homeReturn4.on("click", function () {
-    //   home.show();
-    //   categoryHome.hide();
-
-    //   womenDescription.hide();
-    // });
-    homeReturn.on("click", function () {
+       homeReturn.on("click", function () {
       home.show();
       categoryHome.hide();
     });
@@ -620,6 +611,8 @@ const renderOneItem = function (e) {
   $(".details").show();
   home.hide();
   categoryHome.hide();
+  const divBack = $(`<div class='divBack'></div>`);
+  const backWomen = $(`<div class='backWomen'>Back</div>`);
   const homeReturn4 = $(
     `<div class='homeReturn'><i class="fa-solid fa-house"></i></div>`
   );
@@ -640,10 +633,10 @@ const renderOneItem = function (e) {
     `<div class="divFav"><i  style='font-size:xx-large' class="fa-solid fa-heart"></i></div>`
   );
 
-  // divBack.append(backWomen, homeReturn4);
+  divBack.append(backWomen, homeReturn4);
   $(".details").append(
-    //   divBack,
-    homeReturn4,
+      divBack,
+   
     divTitle,
     divImg,
     divDescription,
@@ -651,12 +644,16 @@ const renderOneItem = function (e) {
     divP,
     divReaction
   );
-  homeReturn4.on("click", function () {
+   homeReturn4.on("click", function () {
     home.show();
     categoryHome.hide();
     $(".details").hide();
   });
-
+  backWomen.on("click", function () {
+    categoryHome.show();
+    home.hide();
+    $(".details").hide();
+  });
   divReaction.append(divCart, divFav);
   divCart.on("click", () => {
     cartArr.push(e);

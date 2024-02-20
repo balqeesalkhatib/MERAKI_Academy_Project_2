@@ -208,6 +208,7 @@
     flex-direction: row;
     justify-content: space-between;
     height: 40px;
+    background-color:#ebaa28;
     }
 .womenDescription,.menDescription,.kidsDescription, .details{
     display: flex;
