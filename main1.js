@@ -277,7 +277,7 @@ const pic1 =
   $(`<div class="pic1"><p class="newArrival" style="font-size: xx-large;">New Arrival</p><img src="./istockphoto-1404603483-1024x1024.jpg" alt="New Arrival"> 
 </div>`);
 const pic2 =
-  $(`<div class="pic2"> <p style="font-size: xx-large;">Best Seller</p> <img src="./hanger-2566555_1280.jpg" alt="Best seller">
+  $(`<div class="pic2"> <p class="BestSeller" style="font-size: xx-large;">Best Seller</p> <img src="./hanger-2566555_1280.jpg" alt="Best seller">
 </div>`);
 const pic3 =
   $(`<div class="pic3"><p style="font-size: xx-large;">Free Shipping</p><img src="pic3.jpg" alt="Free Shipping">
@@ -476,7 +476,17 @@ categoryHome.hide();
 const homeReturn = $(
   `<div class='homeReturn'><i class="fa-solid fa-house"></i></div>`
 );
-
+let best;
+$('.BestSeller').on('click', function(){
+    home.hide();
+  categoryHome.show();
+all.forEach((e,indx)=>{
+  best=all.filter((elem,i)=>{
+        return elem.rating.rate>=4
+          })
+})
+  render(best);
+})
 homeReturn.on("click", function () {
   home.show();
   categoryHome.hide();
